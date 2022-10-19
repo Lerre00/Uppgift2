@@ -6,41 +6,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Logic {
-    public static List<Person> getMatchingCustomer(List<Person> allCustomers, String id){
+    public static List<Person> getMatchingCustomer(List<Person> customerList, String id){
 
-        List<Person> onlyPayingCustomers = new ArrayList<>();
+        List<Person> matchingCustomer = new ArrayList<>();
 
-        for (Person p : allCustomers){
+        for (Person p : customerList){
             if (id.equalsIgnoreCase(p.getName()) || id.equalsIgnoreCase(p.getSsn())){
-                    onlyPayingCustomers.add(p);
-                    return onlyPayingCustomers;
+                matchingCustomer.add(p);
+                    return matchingCustomer;
             }
         }
-        return onlyPayingCustomers;
+        return matchingCustomer;
     }
 
-    public static List<Person> getValidCustomer(List<Person> allCustomers, String id, LocalDate todaysDate){
+    public static List<Person> getValidCustomer(List<Person> customerList, String id, LocalDate todaysDate){
 
-        List<Person> onlyPayingCustomers = new ArrayList<>();
+        List<Person> validCustomer = new ArrayList<>();
 
-        for (Person p : allCustomers){
+        for (Person p : customerList){
 
             LocalDate personDate = LocalDate.parse(p.getDate()).plusYears(1);
 
             if ((id.equalsIgnoreCase(p.getName()) || id.equalsIgnoreCase(p.getSsn())) && (personDate.isEqual(todaysDate) || personDate.isAfter(todaysDate))){
-                onlyPayingCustomers.add(p);
-                return onlyPayingCustomers;
+                validCustomer.add(p);
+                return validCustomer;
             }
 
         }
 
-        return onlyPayingCustomers;
+        return validCustomer;
     }
 
-    public static String getLoyality(List<Person> allCustomers, String id, LocalDate todaysDate){
+    public static String getLoyality(List<Person> matchingCustomer, String id, LocalDate todaysDate){
         String s = "";
 
-        for (Person p : allCustomers){
+        for (Person p : matchingCustomer){
 
             LocalDate personDate = LocalDate.parse(p.getDate()).plusYears(1);
 
@@ -56,7 +56,7 @@ public class Logic {
         if(id.isEmpty()){
             s = "Du skrev inte in ett namn";
         }
-        else if(allCustomers.isEmpty()){
+        else if(matchingCustomer.isEmpty()){
             s = id + " är obehörig";
         }
 
