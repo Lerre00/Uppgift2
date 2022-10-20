@@ -20,7 +20,7 @@ class ReadAndWriteTest {
 
         List<Person> persons = rw.readDataFromFile(inFile);
         assertTrue(persons.size() == 14);
-        assertFalse(persons.size() == 5);
+        assertFalse(persons.size() == 0);
 
     }
 

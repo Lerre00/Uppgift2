@@ -38,10 +38,10 @@ public class ReadAndWrite {
         return customerList;
     }
 
-    public static void writeDataToFile(String writeToFile, List<Person> prunedDownPersonList, LocalDate todaysDate){
+    public static void writeDataToFile(String writeToFile, List<Person> validCustomer, LocalDate todaysDate){
         Path outFilePath = Paths.get(writeToFile);
         try (PrintWriter w = new PrintWriter(new FileWriter(outFilePath.toFile(), true))) {
-            for (Person p : prunedDownPersonList){
+            for (Person p : validCustomer){
                 w.println("namn: " + p.getName() + " pnr: " + p.getSsn() + " gymmade senast: " + todaysDate);
             }
         }

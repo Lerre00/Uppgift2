@@ -27,7 +27,8 @@ public class Logic {
 
             LocalDate personDate = LocalDate.parse(p.getDate()).plusYears(1);
 
-            if ((id.equalsIgnoreCase(p.getName()) || id.equalsIgnoreCase(p.getSsn())) && (personDate.isEqual(todaysDate) || personDate.isAfter(todaysDate))){
+            if ((id.equalsIgnoreCase(p.getName()) || id.equalsIgnoreCase(p.getSsn())) &&
+                    (personDate.isEqual(todaysDate) || personDate.isAfter(todaysDate))){
                 validCustomer.add(p);
                 return validCustomer;
             }
@@ -44,7 +45,8 @@ public class Logic {
 
             LocalDate personDate = LocalDate.parse(p.getDate()).plusYears(1);
 
-            if ((id.equalsIgnoreCase(p.getName()) || id.equalsIgnoreCase(p.getSsn())) && (personDate.isEqual(todaysDate) || personDate.isAfter(todaysDate))){
+            if ((id.equalsIgnoreCase(p.getName()) || id.equalsIgnoreCase(p.getSsn())) &&
+                    (personDate.isEqual(todaysDate) || personDate.isAfter(todaysDate))){
                 s = p.getName() + " är en nuvarande medlem";
             }
             else if((id.equalsIgnoreCase(p.getName()) || id.equalsIgnoreCase(p.getSsn())) && personDate.isBefore(todaysDate)) {
